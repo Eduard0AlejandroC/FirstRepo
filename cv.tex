@@ -1,0 +1,262 @@
+\documentclass[11pt]{memoir}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+%\usepackage[english]{babel}
+\usepackage[top=0.5cm,bottom=1cm,left=1cm,right=1cm]{geometry}
+%\usepackage{amsmath,amsfonts,mathrsfs,amssymb,amsthm}
+\usepackage{graphicx,hyperref,tikz,paracol,eso-pic,lipsum,lmodern}
+\graphicspath{ {imagenes/} }
+\usepackage[pages=all]{background}
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{colorcito}{RGB}{195,195,255}%LILA
+\definecolor{oro}{RGB}{152,145,0}%LILA
+
+\backgroundsetup{
+	scale=1, %escala de la imagen, es recomendable que sea del mismo tamaño que el pdf
+	color=black, %fondo a usar para transparencia
+	opacity=0.12, %nivel de transparencia
+	angle=0, %en caso de querer una rotación
+	contents={\includegraphics[width=\paperwidth,height=\paperheight]{bg.png} %nombre de la imagen a utilizar como fondo
+	}%
+}
+\AddToShipoutPictureBG*{%
+	\AtPageLowerLeft{%
+		\hspace*{0\paperwidth}%
+		\color{colorcito!50}%
+		\rule{0.37\paperwidth}{\paperheight}%
+	}%
+}%
+
+\providecommand{\profilephoto}[1]{\begin{minipage}{5.9cm}
+	\begin{center}
+		\hspace{0.85cm}\includegraphics[width=4cm]{#1}
+	\end{center}\end{minipage}}
+
+\newenvironment{leftlist}{}
+{	\vspace{-0.5cm}
+	\begin{center}
+		\textcolor{white}{\rule{5cm}{4pt}}
+	\end{center}
+}
+\providecommand{\personal}[1]{
+	\vspace{0.2cm}
+	\begin{tabular}{m{0.8cm} m{5cm}} \includegraphics[width=0.8cm]{personal10x10.png}&#1\end{tabular}
+}
+\providecommand{\birthday}[1]{
+	\vspace{0.2cm}
+	\begin{tabular}{m{0.8cm} m{5cm}} \includegraphics[width=0.8cm]{bday10x10.png}&#1\end{tabular}
+}
+\providecommand{\location}[1]{
+	\vspace{0.1cm}
+	\begin{tabular}{m{0.8cm} m{5cm}} \includegraphics[width=0.8cm]{location10x10.png}&#1\end{tabular}
+}
+\providecommand{\mail}[1]{
+	\vspace{0.1cm}	
+	\begin{tabular}{m{0.8cm} m{5cm}} \includegraphics[width=0.8cm]{mail10x10.png}&\href{mailto:#1}{#1}\end{tabular}
+}
+\providecommand{\celphone}[1]{
+	\vspace{0.1cm}	
+	\begin{tabular}{m{0.8cm} m{5cm}} \includegraphics[width=0.8cm]{telefono10x10.png}&#1\end{tabular}
+}
+\providecommand{\acknowledgment}[1]{
+	\vspace{0.1cm}
+	\begin{tabular}{m{0.8cm} m{5cm}} \includegraphics[width=0.8cm]{premios10x10.png}&#1\end{tabular}
+}
+\providecommand{\datacamp}[1]{
+	\vspace{0.1cm}
+	\begin{tabular}{m{0.8cm} m{5cm}} \includegraphics[width=0.8cm]{datacamp.png}&#1\end{tabular}
+}
+\providecommand{\good}[1]{
+	\vspace{0.1cm}
+	\begin{tabular}{m{0.8cm} m{5cm}} \includegraphics[width=0.8cm]{check10x10.png}&#1\end{tabular}
+}
+\providecommand{\study}[1]{
+	\vspace{0.2cm}	
+	\begin{tabular}{m{0.9cm} m{10.5cm}} \includegraphics[width=0.9cm]{estudios10x10.png}&#1\end{tabular}
+}
+\providecommand{\jobs}[1]{
+	\vspace{0.2cm}	
+	\begin{tabular}{m{0.9cm} m{10.5cm}} \includegraphics[width=0.9cm]{trabajo10x10.png}&#1\end{tabular}
+}
+\providecommand{\project}[1]{
+	\vspace{0.2cm}	
+	\begin{tabular}{m{0.9cm} m{10.5cm}} \includegraphics[width=0.95 cm]{proyecto10x10.png}&#1\end{tabular}
+}
+\providecommand{\skill}[1]{
+	\vspace{0.2cm}	
+	\begin{tabular}{m{0.9cm} m{10.5cm}} \includegraphics[width=0.9cm]{conocimientos10x10.png}&#1\end{tabular}
+}
+\providecommand{\knowledge}[1]{
+	\vspace{0.2cm}	
+	\begin{tabular}{m{0.9cm} m{10.5cm}} \includegraphics[width=0.8cm]{conocimientos10x10.png}&#1\end{tabular}
+}
+\providecommand{\interest}[1]{
+	\vspace{0.1cm}	
+	\begin{tabular}{m{0.9cm} m{10.5cm}} \includegraphics[width=0.7cm]{check10x10.png}&#1\end{tabular}
+}
+\providecommand{\pythonimg}[1]{
+	\vspace{0.1cm}	
+	\begin{tabular}{m{0.9cm} m{10.5cm}} \includegraphics[width=0.9cm]{pythonColor10x10.png}&#1\end{tabular}
+}
+\providecommand{\excelimg}[1]{
+	\vspace{0.1cm}	
+	\begin{tabular}{m{0.9cm} m{10.5cm}} \includegraphics[width=0.9cm]{xsls.png}&#1\end{tabular}
+}
+\providecommand{\datacampcourse}[1]{
+	\vspace{0.1cm}	
+	\begin{tabular}{m{0.9cm} m{10.5cm}} \includegraphics[width=0.9cm]{datacamp.png}&#1\end{tabular}
+}
+\providecommand{\nameheader}[2]{		
+	\noindent\vspace{0.2cm}
+	\begin{center}
+		\vspace{-0.9cm}			
+		\hspace{-1cm}
+		\fontsize{28}{28}\selectfont\textit{#1\\ #2}\\
+	\end{center}
+}
+\newenvironment{studies}{	
+	\centering
+	\begin{tikzpicture}
+	\node[rounded corners,fill=colorcito!50,opacity=0.8,text width=8cm, align=center, rounded corners,
+	minimum height=1cm]
+	{\centering
+		\begin{tabular}{m{0.7cm} c}
+		\includegraphics[width=0.8cm]{estudios10x10.png}&\iflanguage{spanish}{{\large Estudios}}{}
+		\iflanguage{english}{{\large Studies}}{} 
+		\end{tabular}};
+	\end{tikzpicture}\par}{\vspace{0.5cm}}
+\newenvironment{experience}{	
+	\centering
+	\begin{tikzpicture}
+	\node[rounded corners,fill=colorcito!50,opacity=0.8,text width=8cm, align=center, rounded corners,
+	minimum height=1cm]
+	{\centering
+		\begin{tabular}{m{0.7cm} c}
+		\includegraphics[width=0.8cm]{trabajo10x10.png}&\iflanguage{spanish}{{\large Experiencia}}{}
+		\iflanguage{english}{{\large Experience}}{} 
+		\end{tabular}};
+	\end{tikzpicture}\par}{\vspace{0.5cm}}
+\newenvironment{projects}{	
+	\centering
+	\begin{tikzpicture}
+	\node[rounded corners,fill=colorcito!50,opacity=0.8,text width=8cm, align=center, rounded corners,
+	minimum height=1cm]
+	{\centering
+		\begin{tabular}{m{0.7cm} c}
+		\includegraphics[width=0.75cm]{proyecto10x10.png}&\iflanguage{spanish}{{\large Proyectos}}{}
+		\iflanguage{english}{{\large Projects}}{} 
+		\end{tabular}};
+	\end{tikzpicture}\par}{\vspace{0.5cm}}
+\newenvironment{knowledges}{	
+	\centering
+	\begin{tikzpicture}
+	\node[rounded corners,fill=colorcito!50,opacity=0.8,text width=8cm, align=center, rounded corners,
+	minimum height=1cm]
+	{\centering
+		\begin{tabular}{m{0.7cm} c}
+		\includegraphics[width=0.8cm]{conocimientos10x10.png}&\iflanguage{spanish}{{\large Conocimientos}}{}
+		\iflanguage{english}{{\large Knowledges}}{} 
+		\end{tabular}};
+	\end{tikzpicture}\par}{\vspace{0.5cm}}
+\newenvironment{interests}{	
+	\centering
+	\begin{tikzpicture}
+	\node[rounded corners,fill=colorcito!50,opacity=0.8,text width=8cm, align=center, rounded corners,
+	minimum height=1cm]
+	{\centering
+		\begin{tabular}{m{0.7cm} c}
+		\includegraphics[width=0.7cm]{check10x10.png}&\iflanguage{spanish}{{\large Intereses}}{}
+		\iflanguage{english}{{\large Interests}}{} 
+		\end{tabular}};
+	\end{tikzpicture}\par}{\vspace{0.5cm}}
+
+
+\begin{document}
+\thispagestyle{empty}\bfseries
+\setlength{\parindent}{-0.4cm}
+\columnratio{0.3,0.45}
+\setlength{\columnsep}{2.5cm}
+\begin{paracol}{2}
+	
+	\begin{leftcolumn}
+		
+		\profilephoto{pokerface}
+			
+		\begin{leftlist}{}
+			\vspace{0.2cm}
+			\personal{Pokerface
+			
+					meme}
+			
+			\birthday{1 de Enero del 2006}
+			
+			\location{Internet, internet}
+			
+			\mail{pokerface@pockermail.com}
+			
+			\celphone{52 $+$ 1234567890}
+		\end{leftlist}
+	
+		\begin{leftlist}%{Distinciones}
+			\begin{center}
+				Nombre del panel
+			\end{center}
+		
+			\acknowledgment{Comando para adjuntar algun logo o reconocimiento}
+			
+			\good{Comando para algo destacado que no necesariamente es un logro o como se te ocurra usarlo}
+		\end{leftlist}
+	
+		\begin{leftlist}%{
+			\begin{center}
+				Habilidades
+			\end{center}
+			\begin{itemize}%[$\bullet$]
+				\item Programación en python
+				\item Programaciòn el \LaTeX
+				\item Programaciòn en C++
+				\item Repositorios de Github
+			\end{itemize}
+		\end{leftlist}
+			
+	\end{leftcolumn}
+
+	%CAMBIO DE COLUMNA
+		
+	\begin{rightcolumn}
+		
+		\begin{studies}
+			\study{Comando para agragar un estudio cursado.}
+			
+			\pythonimg{Comando para alguna certificación en python}
+			
+			\datacampcourse{Comando para algun curso tomando de datacamp}
+			
+			\excelimg{Comando para una certificación en MS Excel}
+			
+		\end{studies}
+	
+		\begin{experience}
+			\jobs{Comando para algún empleo previo}
+		
+		\end{experience}
+	
+		\begin{projects}
+			\project{Comando para algún proyecto desarrollado}
+			
+		\end{projects}
+	
+		\begin{knowledges}
+			\knowledge{Comando para algún conocimiento en particular}
+			
+		\end{knowledges}
+	
+		\begin{interests}
+			\interest{También uso el check para agregar mis intereses}
+		\end{interests}
+	
+	\end{rightcolumn}
+\end{paracol}
+\end{document}
